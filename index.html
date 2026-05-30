@@ -1,438 +1,924 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Devang Kulshreshtha — AI Safety Researcher & Applied Scientist. LLM post-training, red-teaming, agentic AI safety. 10+ publications, 6 patents." />
+  <meta name="author" content="Devang Kulshreshtha" />
+  <title>Devang Kulshreshtha</title>
 
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="theme" content="hugo-academic" />
-        <meta name="generator" content="Hugo 0.19" />
-        <meta name="author" content="Devang Kulshreshtha" />
-        <meta name="description" content="Applied Scientist II at Amazon" />
-        <link rel="stylesheet" href="./css/highlight.min.css" />
-        <link rel="stylesheet" href="./css/bootstrap.min.css" />
-        <link rel="stylesheet" href="./css/font-awesome.min.css" />
-        <link rel="stylesheet" href="./css/academicons.min.css" />
-        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700|Merriweather|Roboto+Mono" />
-        <link rel="stylesheet" href="./css/hugo-academic.css" />
-        <link rel="icon" type="image/png" href="./img/academic_icon.png" />
-        <link rel="apple-touch-icon" type="image/png" href="./img/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-178383532-1"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-178383532-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-178383532-1');
+  </script>
 
-          gtag('config', 'UA-178383532-1');
-        </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        <!-- script>(function(d){var s = d.createElement("script");s.setAttribute("data-account", "vPQMDH7akU");s.setAttribute("src", "https://cdn.userway.org/widget.js");(d.body || d.head).appendChild(s);})(document)</script><noscript>Please ensure Javascript is enabled for purposes of <a href="https://userway.org">website accessibility</a></noscript -->
-        <script>
-                (function(d){
-                   var s = d.createElement("script");
-                   /* uncomment the following line to override default position*/
-                   /* s.setAttribute("data-position", 1);*/
-                   /* uncomment the following line to override default size (values: small, large)*/
-                   s.setAttribute("data-size", "large");
-                   /* uncomment the following line to override default language (e.g., fr, de, es, he, nl, etc.)*/
-                   /* s.setAttribute("data-language", "null");*/
-                   /* uncomment the following line to override color set via widget (e.g., #053f67)*/
-                   /* s.setAttribute("data-color", "#2d68ff");*/
-                   /* uncomment the following line to override type set via widget (1=person, 2=chair, 3=eye, 4=text)*/
-                   s.setAttribute("data-type", "2");
-                   /* s.setAttribute("data-statement_text:", "Our Accessibility Statement");*/
-                   /* s.setAttribute("data-statement_url", "http://www.example.com/accessibility";*/
-                   /* uncomment the following line to override support on mobile devices*/
-                   s.setAttribute("data-mobile", true);
-                   /* uncomment the following line to set custom trigger action for accessibility menu*/
-                   /* s.setAttribute("data-trigger", "triggerId")*/
-                   s.setAttribute("data-account", "vPQMDH7akU");
-                   s.setAttribute("src", "https://cdn.userway.org/widget.js");
-                   (d.body || d.head).appendChild(s);})(document)
-            </script>
-          <noscript>
-          Please ensure Javascript is enabled for purposes of 
-          <a href="https://userway.org">website accessibility</a>
-          </noscript>
+    :root {
+      --bg:           #ffffff;
+      --bg2:          #f7f9fc;
+      --bg3:          #eef2f8;
+      --card:         #ffffff;
+      --card-hover:   #f4f7fc;
+      --border:       rgba(0,0,0,0.09);
+      --border-accent:rgba(37,99,235,0.28);
+      --text:         #111827;
+      --text-muted:   #6b7280;
+      --accent:       #2563eb;
+      --accent2:      #7c3aed;
+      --accent3:      #059669;
+      --gradient:     linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+      --font:         'Inter', sans-serif;
+      --mono:         'JetBrains Mono', monospace;
+      --radius:       12px;
+      --radius-sm:    8px;
+      --shadow:       0 2px 12px rgba(0,0,0,0.08);
+      --shadow-lg:    0 6px 32px rgba(0,0,0,0.12);
+    }
 
-        <title>Devang Kulshreshtha</title>
-    </head>
+    html { scroll-behavior: smooth; }
 
-    <body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
-        <nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/">Devang Kulshreshtha</a></div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="nav-item">
-                            <a href="#about" data-target="#about">
-                                <span>About</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#publications" data-target="#publications">
-                                <span>Publications</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#patents" data-target="#patents">
-                                <span>Patents</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#service" data-target="#service">
-                                <span>Service</span></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <span id="homepage" style="display: none"></span>
-        <section id="about" class="home-section">
-            <div class="container">
-                <div class="row" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-                    <div class="col-xs-12 col-md-4">
-                        <div id="profile">
-                            <div class="portrait" itemprop="image" style="background-image: url('./img/linkedin_dp_zoomed_out.png');"></div>
-                            <div class="portrait-title">
-                                <h2 itemprop="name">Devang Kulshreshtha<br> 💻 </h2>
-                                <p>devangkulshreshtha12@gmail.com</p>
-                            </div>
-                            <p>
-                                <a href="https://github.com/geekydevu"><i class="fa fa-github fa-2x"></i></a> &nbsp &nbsp 
-                                <!-- a href="https://scholar.google.com/citations?user=-E2zJ4AAAAAJ&hl=en"><i class="ai ai-google-scholar ai-2x"></i></a> 
-                                &nbsp &nbsp -->
-                                <a href="https://www.linkedin.com/in/devang-kulshreshtha-278070100/"><i class="fa fa-linkedin fa-2x"></i></a>
-                            </p>
-                            <p><a href="./pdf/resume_impact.pdf">Resume (PDF)</a></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-md-8" itemprop="description">
-                        <h1 id="about">About</h1>
-                        <p>Hi! I’m Devang, an Applied Scientist II at Amazon AWS Agentic AI in New York, with 5+ years of experience in machine learning research and engineering. My research interests include safety and red-teaming in LLMs, Agentic AI Safety, Speech Recognition (ASR), and NLP.</p>
-                        
-                        <p> At Amazon, I led the development of the Bedrock Guardrails <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-components.html#guardrails-prompt-attack">Prompt Attack</a> defense, and contributed core science to launches such as <a href="https://aws.amazon.com/healthscribe/">HealthScribe</a> and <a href="https://aws.amazon.com/lex/">Lex</a>, advancing summarization and ASR systems at scale. My work has resulted in 5+ publications (EMNLP, INTERSPEECH, IJCAI) and 6 patents spanning AI safety, ASR personalization, and lifelong learning.</p>
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-                        <p>I completed my MSc in Computer Science at McGill University & Mila Lab under Prof. <a href="https://sivareddy.in/">Siva Reddy</a>, where I researched question–answer generation and personalised feedback systems with <a href="https://www.korbit.ai/">Korbit AI</a>.</p>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="col-sm-4">
-                            <h3>Education</h3>
-                            <ul class="ul-edu fa-ul">
-                                <li>
-                                    <!-- TODO: add end date-->
-                                    <i class="fa-li fa fa-graduation-cap"></i>
-                                    <div class="description">
-                                        <p class="course">MSc, Computer Science
-                                            <br />Sept. 2020 -- June 2022</p>
-                                        <p class="institution">McGill University, Montreal, Canada</p>
-                                        
-                                        <p class="course">BTech, Computer Science
-                                            <br />July 2014 -- May 2018</p>
-                                        <p class="institution">Indian Institute of Technology, India</p></div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-8">
-                            <h3>Work Experience</h3>
-                            <ul class="ul-interests">
-                                <li>
-                                    <p class="institution">July 2022 - Present, Amazon USA, Applied Scientist II
-                                   </p>
-                                </li>
-                                <li>
-                                    <p class="institution">Jul 2021 - Oct 2021, Amazon UK, Applied Science Intern
-                                    </p>
-                                </li>
-                                <li>
-                                    <p class="institution">September 2020 - June 2020, Korbit.AI, Research Intern
-                                    </p>
-                                </li>
-                                <li>
-                                    <p class="institution">September 2018 - August 2020, Amazon India, Software Engineer
-                                    </p>
-                                </li>
-                                <li>
-                                    <p class="institution">May 2017 - Jul 2017, Amazon India, SDE Intern
-                                    </p>
-                                </li>
-                                <li>
-                                    <p class="institution">May 2016 - Jul 2016 , CFILT Lab IIT Bombay, Research Intern
-                                    </p>
-                                    <!-- <br />
-                                    <ul>
-                                        <li><small>Developed algorithms to improve safety of friend suggestions for underage users on Snapchat while preserving privacy of all users</small></li>
-                                        <li><small>Contributed to development of Snap's Responsible AI principles</small></li>
-                                    </ul> -->
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="publications" class="home-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 section-heading">
-                        <h1>Publications</h1></div>
-                    <div class="col-xs-12">
-                        <hr style="filter:alpha(opacity=100,finishopacity=0,style=2);background-color:#D8D8D8;height:3px" />
+    ::selection { background: #bfdbfe; color: #1e3a8a; }
 
-                        <div class="pub-list-item" itemscope="" itemtype="http://schema.org/CreativeWork">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h5 class="article-title" itemprop="name">STAC: When Innocent Tools Form Dangerous Chains to Jailbreak LLM Agents</h5>
-                                    <div class="pub-authors" itemprop="author">
-                                        Jing-Jing Li, Jianfeng He, Chao Shang, <b><u>Devang Kulshreshtha</u></b>, Xun Xian, Yi Zhang, Hang Su, Sandesh Swamy, Yanjun Qi
-                                        <a class="btn btn-primary btn-outline btn-xs" href="https://www.arxiv.org/abs/2509.25624">Paper</a>
-                                        <div class="pub-publication">arXiv</div>
-                                    </div>
-                            </div>
-                        </div>
+    a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: #1d4ed8; }
 
-                        <div class="pub-list-item" itemscope="" itemtype="http://schema.org/CreativeWork">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h5 class="article-title" itemprop="name">From Benign to Broken: Multi-Turn Jailbreaking of Aligned LLMs via Lexical
-Anchor Tree Search</h5>
-                                    <div class="pub-authors" itemprop="author">
-                                        <b><u>Devang Kulshreshtha</u></b>, Hang Su, Chinmay Hegde, Haohan Wang
-                                        <a class="btn btn-primary btn-outline btn-xs" href="https://geekydevu.github.io/">Paper</a>
-                                        <div class="pub-publication">arXiv</div>
-                                    </div>
-                            </div>
-                        </div>
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg2); }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
 
-                        <div class="pub-list-item" itemscope="" itemtype="http://schema.org/CreativeWork">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h5 class="article-title" itemprop="name">Sequential editing for lifelong training of speech recognition models</h5>
-                                    <div class="pub-authors" itemprop="author">
-                                        <b><u>Devang Kulshreshtha</u></b>, Saket Dingliwal, Brady Houston, Nikolaos Pappas, Srikanth Ronanki
-                                        <a class="btn btn-primary btn-outline btn-xs" href="https://arxiv.org/pdf/2406.17935">Paper</a>
-                                        <div class="pub-publication">INTERSPEECH 2024</div>
-                                    </div>
-                            </div>
-                        </div>
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 2rem; height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 16px rgba(0,0,0,0.08); }
+    .nav-brand { font-weight: 700; font-size: 1rem; color: var(--text); letter-spacing: -0.02em; }
+    .nav-brand span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.85rem; font-weight: 500; color: var(--text-muted); letter-spacing: 0.01em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.25rem; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text); margin: 4px 0; transition: all 0.3s; }
 
-                        <div class="pub-list-item" itemscope="" itemtype="http://schema.org/CreativeWork">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h5 class="article-title" itemprop="name">Generalized zero-shot audio-to-intent classification</h5>
-                                    <div class="pub-authors" itemprop="author">
-                                        Veera Raghavendra Elluru, <b><u>Devang Kulshreshtha</u></b>, Rohit Paturi, Sravan Bodapati, Srikanth Ronanki
-                                        <a class="btn btn-primary btn-outline btn-xs" href="https://ieeexplore.ieee.org/abstract/document/10389657">Paper</a>
-                                        <div class="pub-publication">IEEE ASRU 2023</div>
-                                    </div>
-                            </div>
-                        </div>
+    /* ===== HERO ===== */
+    #about {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 80px 2rem 4rem;
+      position: relative; overflow: hidden;
+      background: var(--bg);
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 75% 40%, rgba(37,99,235,0.05) 0%, transparent 60%),
+        radial-gradient(ellipse 55% 45% at 20% 70%, rgba(124,58,237,0.04) 0%, transparent 55%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.035) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+    }
+    .hero-inner {
+      max-width: 1100px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 4rem; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .hero-label {
+      font-family: var(--mono); font-size: 0.72rem;
+      color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .hero-name {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;
+      color: var(--text); margin-bottom: 0.75rem;
+    }
+    .hero-title {
+      font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+      font-weight: 400; color: var(--text-muted);
+      margin-bottom: 1.5rem; line-height: 1.5;
+    }
+    .hero-title strong { color: var(--accent); font-weight: 600; }
+    .hero-bio {
+      font-size: 1rem; color: #374151; line-height: 1.75;
+      max-width: 600px; margin-bottom: 2rem;
+    }
+    .hero-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 
-                        <div class="pub-list-item" itemscope="" itemtype="http://schema.org/CreativeWork">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h5 class="article-title" itemprop="name">Retrieve and copy: Scaling asr personalization to large catalogs</h5>
-                                    <div class="pub-authors" itemprop="author">
-                                        Sai Muralidhar Jayanthi, <b><u>Devang Kulshreshtha</u></b>, Saket Dingliwal, Srikanth Ronanki, Sravan Bodapati
-                                        <a class="btn btn-primary btn-outline btn-xs" href="https://arxiv.org/abs/2311.08402">Paper</a>
-                                        <div class="pub-publication">EMNLP 2023 (Industry Track)</div>
-                                    </div>
-                            </div>
-                        </div>
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.55rem 1.2rem; border-radius: var(--radius-sm);
+      font-size: 0.875rem; font-weight: 500;
+      transition: all 0.2s; cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--gradient); color: #fff; border: none;
+      box-shadow: 0 2px 12px rgba(37,99,235,0.25);
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); color: #fff; box-shadow: 0 4px 20px rgba(37,99,235,0.35); }
+    .btn-outline {
+      background: transparent; border: 1px solid var(--border); color: var(--text-muted);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
 
-                        <div class="pub-list-item" itemscope="" itemtype="http://schema.org/CreativeWork">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h5 class="article-title" itemprop="name">Mask the bias: Improving domain-adaptive generalization of CTC-based ASR with internal language model estimation</h5>
-                                    <div class="pub-authors" itemprop="author">
-                                        Nilaksh Das, Monica Sunkara, Sravan Bodapati, Jinglun Cai, <b><u>Devang Kulshreshtha</u></b>, Jeff Farris, Katrin Kirchhoff
-                                        <a class="btn btn-primary btn-outline btn-xs" href="https://ieeexplore.ieee.org/abstract/document/10096405">Paper</a>
-                                        <div class="pub-publication">ICASSP 2023</div>
-                                    </div>
-                            </div>
-                        </div>
+    /* Profile Photo */
+    .hero-photo-wrap { position: relative; flex-shrink: 0; }
+    .hero-photo-ring {
+      width: 220px; height: 220px; border-radius: 50%;
+      padding: 3px; background: var(--gradient);
+      box-shadow: 0 4px 32px rgba(37,99,235,0.18);
+    }
+    .hero-photo {
+      width: 100%; height: 100%; border-radius: 50%;
+      object-fit: cover; object-position: center top;
+      display: block; background: var(--bg3);
+    }
 
-                        <div class="pub-list-item" itemscope="" itemtype="http://schema.org/CreativeWork">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h5 class="article-title" itemprop="name">Multilingual contextual adapters to improve custom word recognition in low-resource languages</h5>
-                                    <div class="pub-authors" itemprop="author">
-                                        <b><u>Devang Kulshreshtha</u></b>, Saket Dingliwal, Brady Houston, Sravan Bodapati
-                                        <a class="btn btn-primary btn-outline btn-xs" href="https://arxiv.org/pdf/2307.00759">Paper</a>
-                                        <div class="pub-publication">INTERSPEECH 2023</div>
-                                    </div>
-                            </div>
-                        </div>
+    /* ===== SECTIONS ===== */
+    section { padding: 5rem 2rem; }
+    section:nth-child(even) { background: var(--bg2); }
 
-                        <div class="pub-list-item" itemscope="" itemtype="http://schema.org/CreativeWork">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h5 class="article-title" itemprop="name">Few-shot question generation for personalized feedback in intelligent tutoring systems</h5>
-                                    <div class="pub-authors" itemprop="author">
-                                        <b><u>Devang Kulshreshtha</u></b>, Muhammad Shayan, Robert Belfer, Siva Reddy, Iulian Vlad Serban, Ekaterina Kochmar
-                                        <a class="btn btn-primary btn-outline btn-xs" href="https://ebooks.iospress.nl/pdf/doi/10.3233/FAIA220062">Paper</a>
-                                        <div class="pub-publication">IJCAI-PAIS 2022</div>
-                                    </div>
-                            </div>
-                        </div>
+    .section-inner { max-width: 1100px; margin: 0 auto; }
 
-                        <div class="pub-list-item" itemscope="" itemtype="http://schema.org/CreativeWork">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h5 class="article-title" itemprop="name">Back-Training excels Self-Training at Unsupervised Domain Adaptation of Question Generation and Passage Retrieval</h5>
-                                    <div class="pub-authors" itemprop="author">
-                                        <b><u>Devang Kulshreshtha</u></b>, Robert Belfer, Iulian Vlad Serban, Siva Reddy
-                                        <a class="btn btn-primary btn-outline btn-xs" href="https://arxiv.org/pdf/2104.08801">Paper</a>
-                                        <a class="btn btn-primary btn-outline btn-xs" href="https://github.com/McGill-NLP/MLQuestions">Code</a>
-                                        <div class="pub-publication">EMNLP 2021</div>
-                                    </div>
-                            </div>
-                        </div>
+    .section-tag {
+      font-family: var(--mono); font-size: 0.7rem;
+      color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase;
+      margin-bottom: 0.5rem; display: block;
+    }
+    .section-title {
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      font-weight: 800; letter-spacing: -0.02em;
+      color: var(--text); margin-bottom: 0.5rem;
+    }
+    .section-divider {
+      width: 40px; height: 3px;
+      background: var(--gradient); border-radius: 2px;
+      margin-bottom: 3rem;
+    }
 
-                        <div class="pub-list-item" itemscope="" itemtype="http://schema.org/CreativeWork">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h5 class="article-title" itemprop="name">How emotional are you? Neural architectures for emotion intensity prediction in microblogs</h5>
-                                    <div class="pub-authors" itemprop="author">
-                                        <b><u>Devang Kulshreshtha</u></b>, Pranav Goel, Anil Kumar Singh
-                                        <a class="btn btn-primary btn-outline btn-xs" href="https://aclanthology.org/C18-1247.pdf">Paper</a>
-                                        <a class="btn btn-primary btn-outline btn-xs" href="https://pranav-goel.github.io/files/coling_2018.pdf">Slides</a>
-                                        <a class="btn btn-primary btn-outline btn-xs" href="https://github.com/Pranav-Goel/Neural_Emotion_Intensity_Prediction">Code</a>
-                                        <div class="pub-publication">COLING 2018</div>
-                                    </div>
-                            </div>
-                        </div>
+    /* ===== EDUCATION ===== */
+    .edu-strip { background: var(--bg2); padding: 2rem 2rem; border-bottom: 1px solid var(--border); }
+    .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; max-width: 1100px; margin: 0 auto; }
+    .edu-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+      box-shadow: var(--shadow);
+    }
+    .edu-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .edu-degree { font-size: 0.88rem; font-weight: 700; color: var(--text); }
+    .edu-school { font-size: 0.82rem; color: var(--accent); font-weight: 500; }
+    .edu-meta { font-size: 0.77rem; color: var(--text-muted); margin-top: 0.2rem; }
+    .edu-gpa { color: var(--accent3); font-size: 0.75rem; }
 
-                        <div class="pub-list-item" itemscope="" itemtype="http://schema.org/CreativeWork">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h5 class="article-title" itemprop="name">NLPRL-IITBHU at SemEval-2018 task 3: Combining linguistic features and emoji pre-trained CNN for irony detection in tweets</h5>
-                                    <div class="pub-authors" itemprop="author">
-                                        Harsh Rangwani, <b><u>Devang Kulshreshtha</u></b>, Anil Kumar Singh
-                                        <a class="btn btn-primary btn-outline btn-xs" href="https://aclanthology.org/S18-1104/">Paper</a>
-                                        <div class="pub-publication">SemEval @ NAACL 2018</div>
-                                    </div>
-                            </div>
-                        </div>
+    /* ===== RESEARCH FOCUS ===== */
+    .focus-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+    .focus-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+      transition: all 0.25s; position: relative; overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .focus-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 2px; background: var(--gradient); opacity: 0; transition: opacity 0.25s;
+    }
+    .focus-card:hover { background: var(--card-hover); border-color: var(--border-accent); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+    .focus-card:hover::before { opacity: 1; }
+    .focus-icon { font-size: 1.6rem; margin-bottom: 0.75rem; display: block; }
+    .focus-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
+    .focus-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+    .focus-tag {
+      display: inline-block; margin-top: 0.75rem;
+      font-family: var(--mono); font-size: 0.63rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.2rem 0.6rem; border-radius: 4px;
+      background: rgba(37,99,235,0.08); color: var(--accent);
+    }
 
-                        <div class="pub-list-item" itemscope="" itemtype="http://schema.org/CreativeWork">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h5 class="article-title" itemprop="name">Feature Augmented Deep Neural Networks for Collaborative Filtering</h5>
-                                    <div class="pub-authors" itemprop="author">
-                                        <b><u>Devang Kulshreshtha</u></b>
-                                        <a class="btn btn-primary btn-outline btn-xs" href="https://github.com/geekydevu/my-research-papers/blob/master/ijcai_paper.pdf">Paper</a>
-                                        <a class="btn btn-primary btn-outline btn-xs" href="https://github.com/geekydevu/Deep-Augmented-Hybrid-Collaborative-Filtering">Code</a>
-                                        <div class="pub-publication">IJCAI 2017 Workshop on AI Applications in E-commerce</div>
-                                    </div>
-                            </div>
-                        </div>
+    /* ===== EXPERIENCE ===== */
+    .timeline { position: relative; }
+    .timeline::before {
+      content: ''; position: absolute; left: 16px; top: 0; bottom: 0;
+      width: 1px; background: var(--border);
+    }
+    .tl-item { position: relative; padding-left: 52px; margin-bottom: 2.5rem; }
+    .tl-dot {
+      position: absolute; left: 8px; top: 4px;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--gradient); box-shadow: 0 0 10px rgba(37,99,235,0.3);
+      border: 2px solid var(--bg);
+    }
+    .tl-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.2rem;
+    }
+    .tl-company { font-size: 1rem; font-weight: 700; color: var(--text); }
+    .tl-role { font-size: 0.875rem; color: var(--accent); font-weight: 600; margin-bottom: 0.5rem; }
+    .tl-date {
+      font-family: var(--mono); font-size: 0.7rem; color: var(--text-muted);
+      letter-spacing: 0.04em; white-space: nowrap;
+    }
+    .tl-highlights { list-style: none; margin-top: 0.75rem; }
+    .tl-highlights li {
+      font-size: 0.875rem; color: #374151;
+      padding: 0.4rem 0 0.4rem 1.25rem;
+      position: relative; line-height: 1.6;
+      border-bottom: 1px solid var(--border);
+    }
+    .tl-highlights li:last-child { border-bottom: none; }
+    .tl-highlights li::before {
+      content: '▸'; position: absolute; left: 0;
+      color: var(--accent); font-size: 0.75rem; top: 0.45rem;
+    }
 
-                        <div class="pub-list-item" itemscope="" itemtype="http://schema.org/CreativeWork">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h5 class="article-title" itemprop="name">Prayas at emoint 2017: An ensemble of deep neural architectures for emotion intensity prediction in tweets</h5>
-                                    <div class="pub-authors" itemprop="author">
-                                        Pranav Goel, <b><u>Devang Kulshreshtha</u></b>, Prayas Jain, Kaushal Kumar Shukla
-                                        <a class="btn btn-primary btn-outline btn-xs" href="https://aclanthology.org/W17-5207.pdf">Paper</a>
-                                        <a class="btn btn-primary btn-outline btn-xs" href="https://pranav-goel.github.io/files/WASSA_EMOINT_Shared_Task_final.pdf">Slides</a>
-                                        <div class="pub-publication">8th WASSA Workshop at EMNLP 2017</div>
-                                    </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-        </section>
+    /* ===== PUBLICATIONS ===== */
+    .pub-filters { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .pub-filter-btn {
+      font-size: 0.78rem; font-weight: 500; padding: 0.3rem 0.9rem;
+      border-radius: 20px; border: 1px solid var(--border);
+      background: transparent; color: var(--text-muted);
+      cursor: pointer; transition: all 0.2s; font-family: var(--font);
+    }
+    .pub-filter-btn.active, .pub-filter-btn:hover {
+      background: var(--accent); color: #fff; border-color: var(--accent);
+    }
+    .pub-list { display: flex; flex-direction: column; gap: 1rem; }
+    .pub-item {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem 1.5rem;
+      transition: all 0.2s; display: flex; gap: 1.25rem; align-items: flex-start;
+      box-shadow: var(--shadow);
+    }
+    .pub-item:hover { background: var(--card-hover); border-color: var(--border-accent); box-shadow: var(--shadow-lg); }
+    .pub-year {
+      font-family: var(--mono); font-size: 0.73rem;
+      color: var(--accent); font-weight: 600; white-space: nowrap;
+      min-width: 36px; margin-top: 0.2rem;
+    }
+    .pub-body { flex: 1; }
+    .pub-title { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 0.3rem; line-height: 1.4; }
+    .pub-authors { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem; line-height: 1.5; }
+    .pub-authors strong { color: var(--accent); }
+    .pub-meta { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+    .pub-venue {
+      font-size: 0.73rem; font-weight: 600;
+      padding: 0.15rem 0.6rem; border-radius: 4px;
+      background: rgba(37,99,235,0.08); color: var(--accent);
+      letter-spacing: 0.03em;
+    }
+    .pub-venue.safety { background: rgba(5,150,105,0.08); color: var(--accent3); }
+    .pub-venue.agentic { background: rgba(124,58,237,0.08); color: var(--accent2); }
+    .pub-link {
+      font-size: 0.72rem; font-weight: 500;
+      padding: 0.15rem 0.6rem; border-radius: 4px;
+      border: 1px solid var(--border); color: var(--text-muted);
+      transition: all 0.2s;
+    }
+    .pub-link:hover { border-color: var(--accent); color: var(--accent); }
 
-        <section id="patents" class="home-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 col-md-6 section-heading">
-                        <h1>Patents</h1></div>
-                    <div class="col-xs-12">
-                        <hr style="filter:alpha(opacity=100,finishopacity=0,style=2);background-color:#D8D8D8;height:3px" />
+    /* ===== PATENTS ===== */
+    .patent-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+    .patent-item {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem;
+      transition: all 0.2s; box-shadow: var(--shadow);
+    }
+    .patent-item:hover { background: var(--card-hover); border-color: var(--border-accent); }
+    .patent-id { font-family: var(--mono); font-size: 0.65rem; color: var(--text-muted); margin-bottom: 0.5rem; letter-spacing: 0.05em; }
+    .patent-title { font-size: 0.875rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; line-height: 1.4; }
+    .patent-authors { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.75rem; line-height: 1.5; }
+    .patent-status {
+      font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; padding: 0.15rem 0.5rem; border-radius: 4px;
+    }
+    .patent-status.granted { background: rgba(5,150,105,0.1); color: var(--accent3); }
+    .patent-status.filed { background: rgba(217,119,6,0.1); color: #b45309; }
 
-                        <div class="pub-list-item" itemscope="" itemtype="http://schema.org/CreativeWork">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h5 class="article-title" itemprop="name">Removing bias from automatic speech recognition models using internal language model estimates</h5>
-                                    <div class="pub-authors" itemprop="author">
-                                        Nilaksh Das, Monica Lakshmi Sunkara, Sravan Babu Bodapati, Jinglun Cai, <b><u>Devang Kulshreshtha</u></b>, Jeffrey John Farris, Nicholas G Aldridge, Srikanth Ronanki, Katrin Kirchhoff
-                                        <a class="btn btn-primary btn-outline btn-xs" href="https://patents.google.com/patent/US12387718B1/en">URL</a>
-                                    <div class="pub-publication">US Patent [12387718B1]</div></div>
-                            </div>
-                        </div>
-                        
-                        <div class="pub-list-item" itemscope="" itemtype="http://schema.org/CreativeWork">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h5 class="article-title" itemprop="name">Automated evaluation of evidence mapping models</h5>
-                                    <div class="pub-authors" itemprop="author">
-                                        <b><u>Devang Kulshreshtha</u></b>, Saket Dingliwal, Sravan Babu Bodapati, Katrin Kirchhoff, Sarthak Handa
-                                        <a class="btn btn-primary btn-outline btn-xs" href="https://patents.google.com/patent/US20250005063A1/en">URL</a>
-                                    <div class="pub-publication">US Patent [20250005063A1]</div></div>
-                            </div>
-                        </div>
+    /* ===== SERVICE ===== */
+    .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+    .service-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow);
+    }
+    .service-card h3 {
+      font-size: 0.8rem; font-weight: 700; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 0.1em;
+      margin-bottom: 0.75rem; font-family: var(--mono);
+    }
+    .service-list { list-style: none; }
+    .service-list li {
+      font-size: 0.875rem; color: #374151;
+      padding: 0.35rem 0; border-bottom: 1px solid var(--border);
+    }
+    .service-list li:last-child { border-bottom: none; }
+    .service-list li strong { color: var(--text); }
 
-                        <div class="pub-list-item" itemscope="" itemtype="http://schema.org/CreativeWork">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h5 class="article-title" itemprop="name">Medical Conversation Summarization Style Intelligence</h5>
-                                    <div class="pub-authors" itemprop="author">
-                                        Aparna Elangovan, Lei Xu, <b><u>Devang Kulshreshtha</u></b>, Sravan Babu Bodapati, Katrin Kirchhoff, Sarthak Handa
-                                        <a class="btn btn-primary btn-outline btn-xs" href="https://www.freepatentsonline.com/y2024/0428002.html">URL</a>
-                                    <div class="pub-publication">US Patent [20240428002]</div></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </section>
+    /* ===== CONTACT ===== */
+    #contact { background: var(--bg3); text-align: center; }
+    .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
 
-        <section id="service" class="home-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 col-md-6 section-heading">
-                        <h1>Academic Services</h1></div>
-                    <div class="col-xs-12">
-                        <hr style="filter:alpha(opacity=100,finishopacity=0,style=2);background-color:#D8D8D8;height:3px" />
-                    <div>
-                      <p>
-                        <ul>
-                            <li><b>Reviewing: </b><a href="https://aaai.org/conference/aaai/aaai-26/main-technical-track-call/">AAAI 2026</a>, <a href="https://www.interspeech2025.org/call-for-papers/">INTERSPEECH 2025</a>, <a href="https://aclrollingreview.org/">ARR 2024</a>, <a href="https://interspeech2024.org/call-for-papers/">INTERSPEECH 2024</a>, <a href="https://aclrollingreview.org/">ARR 2022</a>
-                            </li><b>Talks: </b>INTERSPEECH (Dublin, 2023), IJCAI-PAIS (Virtual, 2022), EMNLP (Virtual, 2021), COLING (Virtual, 2018), IJCAI Workshop (Melbourne, 2017)</li>
-                            <li><b>Teaching: </b>IIT Varanasi: Introduction to Artificial Intelligence (Spring 2018), Introduction to Programming in C (Fall 2016)</li>
-                        </ul>
-                        </p>
-                    </div>
-                </div>
-              </div>
-            </div>
-        </section>
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--bg); border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem; text-align: center;
+      font-size: 0.78rem; color: var(--text-muted);
+    }
 
-        <br />
-        <footer class="site-footer">
-            <div class="container">
-                <p class="powered-by">&copy; 2025 Devang Kulshreshtha &middot; Modeled after
-                    <a href="https://arjunsubramonian.github.io/">Arjun Subramonian's website</a> &middot; Powered by the
-                    <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic theme</a> for
-                    <a href="http://gohugo.io" target="_blank">Hugo</a>.
-                    <span class="pull-right" aria-hidden="true">
-                        <a href="#" id="back_to_top">
-                            <span class="button_icon">
-                                <i class="fa fa-chevron-up fa-2x"></i></span>
-                        </a>
-                    </span>
-                </p>
-            </div>
-        </footer>
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-photo-wrap { order: -1; display: flex; justify-content: center; }
+      .hero-photo-ring { width: 160px; height: 160px; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--border); padding: 1rem 2rem; gap: 0.75rem; backdrop-filter: blur(12px); }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: block; }
+      section { padding: 3.5rem 1.25rem; }
+      .timeline::before { left: 12px; }
+      .tl-item { padding-left: 40px; }
+      .tl-dot { left: 4px; }
+    }
 
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { opacity: 0; animation: fadeUp 0.6s ease forwards; }
+    .fade-up:nth-child(1) { animation-delay: 0.1s; }
+    .fade-up:nth-child(2) { animation-delay: 0.2s; }
+    .fade-up:nth-child(3) { animation-delay: 0.3s; }
+    .fade-up:nth-child(4) { animation-delay: 0.4s; }
+
+    @keyframes pulse-ring {
+      0%, 100% { box-shadow: 0 4px 24px rgba(37,99,235,0.15); }
+      50%       { box-shadow: 0 4px 36px rgba(37,99,235,0.32); }
+    }
+    .hero-photo-ring { animation: pulse-ring 5s ease-in-out infinite; }
+  </style>
+</head>
+
+<body>
+
+<!-- ===== NAV ===== -->
+<nav id="navbar">
+  <div class="nav-brand">Devang <span>Kulshreshtha</span></div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#patents">Patents</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="about">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div>
+      <p class="hero-label fade-up">AI Safety · LLM Research · Agentic AI</p>
+      <h1 class="hero-name fade-up">Devang<br/>Kulshreshtha</h1>
+      <p class="hero-title fade-up">
+        Applied Scientist II · <strong>Amazon AWS</strong> &nbsp;|&nbsp; PhD · <strong>NYU</strong>
+      </p>
+      <p class="hero-bio fade-up">
+        Researcher and applied scientist with 5+ years in machine learning research and engineering, focused on <strong>LLM safety and red-teaming</strong>, <strong>post-training</strong> (SFT, RLHF, model editing), and <strong>agentic AI systems</strong>. Previously worked on speech recognition, multilingual NLP, and continual learning.
+      </p>
+      <div class="hero-links fade-up">
+        <a href="https://scholar.google.com/citations?user=-E2zJ4AAAAAJ&hl=en" class="btn btn-primary" target="_blank">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
+          Google Scholar
+        </a>
+        <a href="https://arxiv.org/search/?query=devang+kulshreshtha&searchtype=author&" class="btn btn-outline" target="_blank">arXiv</a>
+        <a href="https://www.linkedin.com/in/devang-kulshreshtha-278070100" class="btn btn-outline" target="_blank">LinkedIn</a>
+        <a href="https://github.com/geekydevu" class="btn btn-outline" target="_blank">GitHub</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-ring">
+        <img src="./img/profile.png" alt="Devang Kulshreshtha" class="hero-photo" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EDUCATION STRIP ===== -->
+<div class="edu-strip">
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-icon">🎓</div>
+      <div>
+        <div class="edu-degree">PhD in Machine Learning <span style="font-weight:400;color:var(--text-muted)">(part-time)</span></div>
+        <div class="edu-school">New York University</div>
+        <div class="edu-meta">2025 – Present</div>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-icon">🎓</div>
+      <div>
+        <div class="edu-degree">MSc, Computer Science &nbsp;<span class="edu-gpa">GPA 4.0/4.0</span></div>
+        <div class="edu-school">McGill University &amp; Mila Lab</div>
+        <div class="edu-meta">2020 – 2022 · Advisor: Siva Reddy</div>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-icon">🎓</div>
+      <div>
+        <div class="edu-degree">B.Tech, Computer Science &nbsp;<span class="edu-gpa">9.11/10</span></div>
+        <div class="edu-school">IIT Varanasi (BHU)</div>
+        <div class="edu-meta">2014 – 2018</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===== EXPERIENCE ===== -->
+<section id="experience">
+  <div class="section-inner">
+    <span class="section-tag">Career</span>
+    <h2 class="section-title">Experience</h2>
+    <div class="section-divider"></div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <div>
+            <div class="tl-company">Amazon AWS AI &nbsp;<span style="font-size:0.78rem;color:var(--text-muted);font-weight:400;">(AgentCore · Bedrock · Lex)</span></div>
+            <div class="tl-role">Applied Scientist II</div>
+          </div>
+          <div class="tl-date">Oct 2023 – Present · New York</div>
+        </div>
+        <ul class="tl-highlights">
+          <li>Research on LLM safety and red-teaming, developing novel attack and defense techniques for production guardrail systems.</li>
+          <li>Design and deployment of ML safety classifiers for agentic AI workflows.</li>
+          <li>LLM post-training: domain-adaptive pre-training, SFT, and RLHF for policy enforcement in agentic systems.</li>
+          <li>Synthetic data infrastructure design for cold-start agentic AI scenarios.</li>
+          <li>Multimodal LLM evaluation framework spanning speech, language, and audio benchmarks.</li>
+          <li>Mentored research interns to top-venue publications; reviewer for ACL, EMNLP, AAAI, INTERSPEECH.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <div>
+            <div class="tl-company">Amazon AWS AI &nbsp;<span style="font-size:0.78rem;color:var(--text-muted);font-weight:400;">(Bedrock · Lex)</span></div>
+            <div class="tl-role">Applied Scientist I</div>
+          </div>
+          <div class="tl-date">Jun 2022 – Sep 2023 · Seattle</div>
+        </div>
+        <ul class="tl-highlights">
+          <li>Research on retrieval-augmented methods for scaling ASR personalization to large entity catalogs. Deployed to production. (EMNLP 2023)</li>
+          <li>Multilingual contextual adapters for custom word recognition, expanding production ASR coverage across languages and locales. (INTERSPEECH 2023)</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <div>
+            <div class="tl-company">Korbit.AI</div>
+            <div class="tl-role">Research Engineer</div>
+          </div>
+          <div class="tl-date">2020 – 2022 · Montreal</div>
+        </div>
+        <ul class="tl-highlights">
+          <li>Transformer and retrieval-based models for automated question generation and adaptive feedback in large-scale intelligent tutoring systems. (EMNLP 2021, IJCAI-PAIS 2022)</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <div>
+            <div class="tl-company">Amazon AWS &nbsp;<span style="font-size:0.78rem;color:var(--text-muted);font-weight:400;">(Internship)</span></div>
+            <div class="tl-role">Applied Science Intern</div>
+          </div>
+          <div class="tl-date">May – Aug 2021 · UK (Remote)</div>
+        </div>
+        <ul class="tl-highlights">
+          <li>Research on LLM-based rescoring for improving ASR accuracy on long-tail European languages.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <div>
+            <div class="tl-company">Amazon India</div>
+            <div class="tl-role">Software Engineer</div>
+          </div>
+          <div class="tl-date">2018 – 2020 · Bangalore</div>
+        </div>
+        <ul class="tl-highlights">
+          <li>Built scalable anomaly detection systems for invoice monitoring, reducing false positives by 30%.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <div>
+            <div class="tl-company">INRIA Research Labs · University of Rennes</div>
+            <div class="tl-role">Research Intern</div>
+          </div>
+          <div class="tl-date">Summer 2018 · France</div>
+        </div>
+        <ul class="tl-highlights">
+          <li>Subgraph mining approach for identifying DNN computation patterns linked to incorrect predictions, improving diagnostic accuracy.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== PUBLICATIONS ===== -->
+<section id="publications">
+  <div class="section-inner">
+    <span class="section-tag">Research Output</span>
+    <h2 class="section-title">Publications</h2>
+    <div class="section-divider"></div>
+
+    <div class="pub-filters">
+      <button class="pub-filter-btn active" onclick="filterPubs(this,'all')">All</button>
+      <button class="pub-filter-btn" onclick="filterPubs(this,'safety')">AI Safety</button>
+      <button class="pub-filter-btn" onclick="filterPubs(this,'speech')">Speech &amp; NLP</button>
+    </div>
+
+    <div class="pub-list" id="pub-list">
+
+      <div class="pub-item" data-tags="safety agentic">
+        <div class="pub-year">2026</div>
+        <div class="pub-body">
+          <div class="pub-title">Break Me If You Can: Self-Jailbreaking of Aligned LLMs via Lexical Insertion Prompting</div>
+          <div class="pub-authors"><strong>D. Kulshreshtha</strong>, H. Su, H. Wang, C. Hegde</div>
+          <div class="pub-meta">
+            <span class="pub-venue safety">TrustNLP @ ACL 2026</span>
+            <a href="https://arxiv.org/pdf/2601.02670v2" class="pub-link" target="_blank">Paper</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-tags="safety agentic">
+        <div class="pub-year">2026</div>
+        <div class="pub-body">
+          <div class="pub-title">Understanding Uncooperative Behaviors in LLM-based Multi-Agent Systems</div>
+          <div class="pub-authors"><strong>D. Kulshreshtha</strong>, W. Du, R. Jain, S. Doss, H. Su, S. Swamy, Y. Qi</div>
+          <div class="pub-meta">
+            <span class="pub-venue agentic">EACL 2026 (Industry)</span>
+            <a href="https://arxiv.org/pdf/2511.15862" class="pub-link" target="_blank">Paper</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-tags="safety agentic">
+        <div class="pub-year">2026</div>
+        <div class="pub-body">
+          <div class="pub-title">STAC: When Innocent Tools Form Dangerous Chains to Jailbreak LLM Agents</div>
+          <div class="pub-authors">J.J. Li, J. He, <strong>D. Kulshreshtha</strong>, X. Xian, Y. Zhang, H. Su, S. Swamy, Y. Qi</div>
+          <div class="pub-meta">
+            <span class="pub-venue agentic">arXiv 2026</span>
+            <a href="https://arxiv.org/pdf/2509.25624" class="pub-link" target="_blank">Paper</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-tags="speech">
+        <div class="pub-year">2024</div>
+        <div class="pub-body">
+          <div class="pub-title">Sequential Editing for Lifelong Training of Speech Recognition Models</div>
+          <div class="pub-authors"><strong>D. Kulshreshtha</strong>, S. Dingliwal, B. Houston, N. Pappas, S. Ronanki</div>
+          <div class="pub-meta">
+            <span class="pub-venue">INTERSPEECH 2024</span>
+            <a href="https://www.arxiv.org/pdf/2406.17935" class="pub-link" target="_blank">Paper</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-tags="speech">
+        <div class="pub-year">2023</div>
+        <div class="pub-body">
+          <div class="pub-title">Retrieve and Copy: Scaling ASR Personalization to Large Catalogs</div>
+          <div class="pub-authors">S.M. Jayanthi, <strong>D. Kulshreshtha</strong>, S. Dingliwal, S. Ronanki, S. Bodapati</div>
+          <div class="pub-meta">
+            <span class="pub-venue">EMNLP 2023 (Industry)</span>
+            <a href="https://arxiv.org/pdf/2311.08402.pdf" class="pub-link" target="_blank">Paper</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-tags="speech">
+        <div class="pub-year">2023</div>
+        <div class="pub-body">
+          <div class="pub-title">Generalized Zero-Shot Audio-to-Intent Classification</div>
+          <div class="pub-authors">V.R. Elluru, <strong>D. Kulshreshtha</strong>, R. Paturi, S. Bodapati, S. Ronanki</div>
+          <div class="pub-meta">
+            <span class="pub-venue">IEEE ASRU 2023</span>
+            <a href="https://arxiv.org/pdf/2311.02482.pdf" class="pub-link" target="_blank">Paper</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-tags="speech">
+        <div class="pub-year">2023</div>
+        <div class="pub-body">
+          <div class="pub-title">Multilingual Contextual Adapters for Custom Word Recognition in Low-Resource Languages</div>
+          <div class="pub-authors"><strong>D. Kulshreshtha</strong>, S. Dingliwal, B. Houston, S. Bodapati</div>
+          <div class="pub-meta">
+            <span class="pub-venue">INTERSPEECH 2023</span>
+            <a href="https://arxiv.org/pdf/2307.00759.pdf" class="pub-link" target="_blank">Paper</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-tags="speech">
+        <div class="pub-year">2023</div>
+        <div class="pub-body">
+          <div class="pub-title">Improving Domain-Adaptive Generalization of CTC-Based ASR with Internal LM Estimation</div>
+          <div class="pub-authors">N. Das, M. Sunkara, S. Bodapati, J. Cai, <strong>D. Kulshreshtha</strong>, J. Farris, K. Kirchhoff</div>
+          <div class="pub-meta">
+            <span class="pub-venue">ICASSP 2023</span>
+            <a href="https://arxiv.org/pdf/2305.03837.pdf" class="pub-link" target="_blank">Paper</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-tags="nlp speech">
+        <div class="pub-year">2022</div>
+        <div class="pub-body">
+          <div class="pub-title">Few-Shot Question Generation for Personalized Feedback in Intelligent Tutoring Systems</div>
+          <div class="pub-authors"><strong>D. Kulshreshtha</strong>, M. Shayan, R. Belfer, S. Reddy, I.V. Serban, E. Kochmar</div>
+          <div class="pub-meta">
+            <span class="pub-venue">IJCAI-PAIS 2022</span>
+            <a href="https://arxiv.org/pdf/2206.04187.pdf" class="pub-link" target="_blank">Paper</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-tags="nlp speech">
+        <div class="pub-year">2021</div>
+        <div class="pub-body">
+          <div class="pub-title">Back-Training Excels Self-Training at Unsupervised Domain Adaptation of Question Generation and Passage Retrieval</div>
+          <div class="pub-authors"><strong>D. Kulshreshtha</strong>, R. Belfer, I.V. Serban, S. Reddy</div>
+          <div class="pub-meta">
+            <span class="pub-venue">EMNLP 2021</span>
+            <a href="https://arxiv.org/pdf/2104.08801" class="pub-link" target="_blank">Paper</a>
+            <a href="https://github.com/McGill-NLP/MLQuestions" class="pub-link" target="_blank">Code</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-tags="nlp speech">
+        <div class="pub-year">2018</div>
+        <div class="pub-body">
+          <div class="pub-title">How Emotional Are You? Neural Architectures for Emotion Intensity Prediction in Microblogs</div>
+          <div class="pub-authors"><strong>D. Kulshreshtha</strong>, P. Goel, A.K. Singh</div>
+          <div class="pub-meta">
+            <span class="pub-venue">COLING 2018</span>
+            <a href="https://aclanthology.org/C18-1247.pdf" class="pub-link" target="_blank">Paper</a>
+            <a href="https://github.com/Pranav-Goel/Neural_Emotion_Intensity_Prediction" class="pub-link" target="_blank">Code</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-tags="nlp speech">
+        <div class="pub-year">2018</div>
+        <div class="pub-body">
+          <div class="pub-title">NLPRL-IITBHU at SemEval-2018 Task 3: Combining Linguistic Features and Emoji Pre-trained CNN for Irony Detection</div>
+          <div class="pub-authors">H. Rangwani, <strong>D. Kulshreshtha</strong>, A.K. Singh</div>
+          <div class="pub-meta">
+            <span class="pub-venue">SemEval @ NAACL 2018</span>
+            <a href="https://aclanthology.org/S18-1104/" class="pub-link" target="_blank">Paper</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-tags="nlp">
+        <div class="pub-year">2017</div>
+        <div class="pub-body">
+          <div class="pub-title">Feature Augmented Deep Neural Networks for Collaborative Filtering</div>
+          <div class="pub-authors"><strong>D. Kulshreshtha</strong></div>
+          <div class="pub-meta">
+            <span class="pub-venue">IJCAI 2017 Workshop</span>
+            <a href="https://github.com/geekydevu/my-research-papers/blob/master/ijcai_paper.pdf" class="pub-link" target="_blank">Paper</a>
+            <a href="https://github.com/geekydevu/Deep-Augmented-Hybrid-Collaborative-Filtering" class="pub-link" target="_blank">Code</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-tags="nlp">
+        <div class="pub-year">2017</div>
+        <div class="pub-body">
+          <div class="pub-title">Prayas at EmoInt 2017: An Ensemble of Deep Neural Architectures for Emotion Intensity Prediction in Tweets</div>
+          <div class="pub-authors">P. Goel, <strong>D. Kulshreshtha</strong>, P. Jain, K.K. Shukla</div>
+          <div class="pub-meta">
+            <span class="pub-venue">WASSA @ EMNLP 2017</span>
+            <a href="https://aclanthology.org/W17-5207.pdf" class="pub-link" target="_blank">Paper</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== PATENTS ===== -->
+<section id="patents">
+  <div class="section-inner">
+    <span class="section-tag">Intellectual Property</span>
+    <h2 class="section-title">US Patents</h2>
+    <div class="section-divider"></div>
+    <div class="patent-grid">
+
+      <div class="patent-item">
+        <div class="patent-id">US 12387718B1</div>
+        <div class="patent-title">Removing Bias from Speech Recognition Models using Internal Language Model Estimates</div>
+        <div class="patent-authors">N. Das, M.N. Sunkara, S.B. Bodapati, J. Cai, <strong>D. Kulshreshtha</strong>, J. Farris, N. Aldridge</div>
+        <span class="patent-status granted">Granted</span>
+        &nbsp;<a href="https://patents.google.com/patent/US12387718B1/en" class="pub-link" target="_blank">View</a>
+      </div>
+
+      <div class="patent-item">
+        <div class="patent-id">US 20250005063A1</div>
+        <div class="patent-title">Automated Evaluation of Evidence Mapping Models</div>
+        <div class="patent-authors"><strong>D. Kulshreshtha</strong>, S. Dingliwal, S.B. Bodapati, K. Kirchhoff, S. Handa</div>
+        <span class="patent-status granted">Granted</span>
+        &nbsp;<a href="https://patents.google.com/patent/US20250005063A1/en" class="pub-link" target="_blank">View</a>
+      </div>
+
+      <div class="patent-item">
+        <div class="patent-id">US 20240428002A1</div>
+        <div class="patent-title">Medical Conversation Summarization Style Intelligence</div>
+        <div class="patent-authors">A. Elangovan, <strong>D. Kulshreshtha</strong>, K. Kirchhoff, L. Xu, S. Handa, S.B. Bodapati</div>
+        <span class="patent-status granted">Granted</span>
+        &nbsp;<a href="https://patents.google.com/patent/US20240428002A1/en" class="pub-link" target="_blank">View</a>
+      </div>
+
+      <div class="patent-item">
+        <div class="patent-id">US 12562151B1</div>
+        <div class="patent-title">Augmenting Automated Speech Recognition Neural Networks with Scalable Vocabularies</div>
+        <div class="patent-authors"><strong>D. Kulshreshtha</strong>, S. Dingliwal, S.B. Bodapati, V.R. Elluru, A. Mishra, K. Kirchhoff</div>
+        <span class="patent-status granted">Granted</span>
+        &nbsp;<a href="https://patents.google.com/patent/US12562151B1/en" class="pub-link" target="_blank">View</a>
+      </div>
+
+      <div class="patent-item">
+        <div class="patent-id">Filed</div>
+        <div class="patent-title">Sequential Editing for Lifelong Training of Speech Recognition Models</div>
+        <div class="patent-authors"><strong>D. Kulshreshtha</strong>, N. Pappas, S. Dingliwal, B. Houston, S. Ronanki, V.R. Elluru</div>
+        <span class="patent-status filed">Filed</span>
+      </div>
+
+      <div class="patent-item">
+        <div class="patent-id">Filed</div>
+        <div class="patent-title">Multilingual Contextual Adapters for ASR Personalization of Low-Resource Languages</div>
+        <div class="patent-authors"><strong>D. Kulshreshtha</strong>, S. Dingliwal, B. Houston, S. Bodapati, S. Ronanki, et al.</div>
+        <span class="patent-status filed">Filed</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICE ===== -->
+<section id="service" style="background:var(--bg2);">
+  <div class="section-inner">
+    <span class="section-tag">Community</span>
+    <h2 class="section-title">Academic Service</h2>
+    <div class="section-divider"></div>
+    <div class="service-grid">
+      <div class="service-card">
+        <h3>Reviewing</h3>
+        <ul class="service-list">
+          <li><strong>COLM 2026</strong></li>
+          <li><strong>ACL 2026</strong></li>
+          <li><strong>AAAI 2026</strong> — Main Technical Track</li>
+          <li><strong>INTERSPEECH 2025</strong></li>
+          <li><strong>ACL Rolling Review 2024</strong></li>
+          <li><strong>INTERSPEECH 2024</strong></li>
+          <li><strong>ACL Rolling Review 2022</strong></li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <h3>Talks</h3>
+        <ul class="service-list">
+          <li><strong>INTERSPEECH 2023</strong> — Dublin, Ireland</li>
+          <li><strong>IJCAI-PAIS 2022</strong> — Vienna (Virtual)</li>
+          <li><strong>EMNLP 2021</strong> — Virtual</li>
+          <li><strong>COLING 2018</strong> — Virtual</li>
+          <li><strong>IJCAI Workshop 2017</strong> — Melbourne</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <h3>Teaching</h3>
+        <ul class="service-list">
+          <li><strong>McGill University / Mila</strong> — IVADO Workshop</li>
+          <li><strong>IIT Varanasi</strong> — Introduction to AI (Spring 2018)</li>
+          <li><strong>IIT Varanasi</strong> — Intro to Programming in C (Fall 2016)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="section-inner">
+    <span class="section-tag">Get in Touch</span>
+    <h2 class="section-title" style="margin-bottom:0.5rem;">Let's Connect</h2>
+    <p style="color:var(--text-muted);font-size:0.95rem;max-width:480px;margin:0 auto;">
+      Interested in discussing AI safety research, LLM post-training, or agentic systems? Reach out.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:devangkulshreshtha12@gmail.com" class="btn btn-primary">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email
+      </a>
+      <a href="https://www.linkedin.com/in/devang-kulshreshtha-278070100" class="btn btn-outline" target="_blank">LinkedIn</a>
+      <a href="https://scholar.google.com/citations?user=-E2zJ4AAAAAJ&hl=en" class="btn btn-outline" target="_blank">Google Scholar</a>
+      <a href="https://github.com/geekydevu" class="btn btn-outline" target="_blank">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p>&copy; 2025 Devang Kulshreshtha &nbsp;·&nbsp; New York, NY</p>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  document.getElementById('nav-toggle').addEventListener('click', () => {
+    document.getElementById('nav-links').classList.toggle('open');
+  });
+
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('nav-links').classList.remove('open'));
+  });
+
+  function filterPubs(btn, tag) {
+    document.querySelectorAll('.pub-filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.pub-item').forEach(item => {
+      const tags = item.dataset.tags || '';
+      item.style.display = (tag === 'all' || tags.includes(tag)) ? '' : 'none';
+    });
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.focus-card, .tl-item, .pub-item, .patent-item, .edu-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(14px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
 </html>
